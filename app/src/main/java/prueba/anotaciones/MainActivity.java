@@ -39,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
         db = new BaseDatos(this);
         db.onCreate(db.getReadableDatabase());
 
-
         ver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
