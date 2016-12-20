@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Anotaciones</string>
+    <string name="categoria">Introducir categoría</string>
+    <string name="nota">Introducir nueva nota</string>
+    <string name="guardar">GUARDAR NOTA</string>
+    <string name="verNotas">VER NOTAS GURADDAS</string>
+    <string name="borrar">Borrar BDD</string>
+    <string name="volver">Atrás</string>
+    <string name="salir">Salir</string>
+</resources>
