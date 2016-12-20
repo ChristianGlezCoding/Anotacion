@@ -85,7 +85,7 @@ public class BaseDatos extends SQLiteOpenHelper {
         if( c != null && c.moveToFirst() ){
             do {
                 Categoria = "Categoría: " + c.getString(1);
-                Nota = " Nota: " + c.getInt(2) + " ";
+                Nota = " Nota: " + c.getString(2) + " ";
                 Fecha = "Fecha: " +c.getString(3);
                 anotaciones.add(Categoria);
                 anotaciones.add(Nota);
