@@ -50,10 +50,10 @@
             android:layout_weight="1" />
 
         <Button
-            android:text="@string/salir"
+            android:text="@string/filtrar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/buttonSalir"
+            android:id="@+id/buttonFiltrar"
             android:layout_weight="1" />
     </LinearLayout>
 

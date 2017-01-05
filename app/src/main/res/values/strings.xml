@@ -6,5 +6,13 @@
     <string name="verNotas">VER NOTAS GURADDAS</string>
     <string name="borrar">Borrar BDD</string>
     <string name="volver">Atrás</string>
-    <string name="salir">Salir</string>
+    <string name="filtrar">Filtrar...</string>
+    <string name="filtro">Seleccione las columnas que quiere mostrar: </string>
+    <string name="cat">Categoría</string>
+    <string name="not">Nota</string>
+    <string name="fec">Fecha</string>
+    <string name="filtrosAp">Seleccione la columna/s por la/s que filtrar:</string>
+    <string name="mostrarDatos">Estos son los resultados</string>
+    <string name="bor">Borrar</string>
+    <string name="ejecutar">Ejecutar la consulta</string>
 </resources>

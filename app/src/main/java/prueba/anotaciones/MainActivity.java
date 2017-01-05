@@ -54,15 +54,15 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     db.onCreate(db.getReadableDatabase());
                     resultado.setText("");
-                    String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
-                    db.insertarRegistro(db.getWritableDatabase(), categoria.getText().toString(),nota.getText().toString(), currentDateTimeString);
+                    //String para comprobar el cambio de tiempo mediante minutos y segundos
+                    //String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
+                    String currentTimeString = DateFormat.getDateInstance().format(new Date());
+                    db.insertarRegistro(db.getWritableDatabase(), categoria.getText().toString(),nota.getText().toString());
                     Toast.makeText(getApplicationContext(), "Datos introducidos correctamente", Toast.LENGTH_SHORT).show();
-
                    resultado.setText("Categoría: " +categoria.getText() +
                                       "\nNota: "+ nota.getText() +
-                                      "\nFecha: " + currentDateTimeString +
+                                      "\nFecha: " + currentTimeString +
                                       "\nAñadidos");
-
                 }catch (Exception x){
                     Toast.makeText(getApplicationContext(), "Error al añadir datos", Toast.LENGTH_SHORT).show();
                 }

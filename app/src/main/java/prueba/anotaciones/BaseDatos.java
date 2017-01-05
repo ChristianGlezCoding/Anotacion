@@ -11,8 +11,12 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 public class BaseDatos extends SQLiteOpenHelper {
 
@@ -34,7 +38,7 @@ public class BaseDatos extends SQLiteOpenHelper {
                 + "ID" + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + "Categoria" + " TEXT,"
                 + "Nota" + " TEXT,"
-                + "Fecha" + " TEXT );";
+                + "Fecha" + " DATETIME );";
 
         sqLiteDatabase.execSQL(CREATE_ANOTACIONES_TABLE);
 
@@ -48,16 +52,13 @@ public class BaseDatos extends SQLiteOpenHelper {
         }
     }
 
-    public long insertarRegistro(SQLiteDatabase db, String categoria, String nota, String fecha){
 
-        //Creamos el registro a insertar como objeto ContentValues
+    public long insertarRegistro(SQLiteDatabase db, String categoria, String nota){
+
         ContentValues nuevoRegistro = new ContentValues();
-
         nuevoRegistro.put("Nota", nota);
         nuevoRegistro.put("Categoria", categoria);
-
-        nuevoRegistro.put("Fecha", fecha);
-        //Insertamos el registro en la base de datos
+        nuevoRegistro.put("Fecha", getDateTime());
         return db.insert("ANOTACIONES", null , nuevoRegistro);
     }
     public boolean checkDataBase() {
@@ -66,7 +67,7 @@ public class BaseDatos extends SQLiteOpenHelper {
             checkDB = SQLiteDatabase.openDatabase(DATABASE_NAME, null,SQLiteDatabase.OPEN_READONLY);
             checkDB.close();
         } catch (SQLiteException e) {
-            // no se ha creado la base de datos
+
         }
         return checkDB != null;
     }
@@ -100,5 +101,19 @@ public class BaseDatos extends SQLiteOpenHelper {
 
         db.execSQL(sentencia);
 
+
     }
+
+    private String getDateTime() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat(
+
+                //Formato para poder comprobar que cambia la fecha mediante HH:mm:ss
+                //"yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+                "dd-MM-yyyy", Locale.getDefault());
+        Date date = new Date();
+        return dateFormat.format(date);
+    }
+
+
+
 }

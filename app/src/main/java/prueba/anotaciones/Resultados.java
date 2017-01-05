@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class Resultados extends AppCompatActivity {
     TextView resultados;
-    Button atras, salir, borrar;
+    Button atras, filtrar, borrar;
     BaseDatos db;
     MainActivity main;
 
@@ -30,7 +30,7 @@ public class Resultados extends AppCompatActivity {
 
         resultados = (TextView)findViewById(R.id.textViewResultados);
         atras = (Button)findViewById(R.id.buttonAtras);
-        salir = (Button)findViewById(R.id.buttonSalir);
+        filtrar = (Button)findViewById(R.id.buttonFiltrar);
         borrar = (Button)findViewById(R.id.ButtonBorrar);
 
 
@@ -43,7 +43,7 @@ public class Resultados extends AppCompatActivity {
             }
         });
 
-        salir.setOnClickListener(new View.OnClickListener() {
+        filtrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -64,7 +64,6 @@ public class Resultados extends AppCompatActivity {
         mostrarArticulos(resultados);
     }
 
-
     private void mostrarArticulos(TextView r){
 
 
@@ -76,14 +75,9 @@ public class Resultados extends AppCompatActivity {
         r.setText("");
         for(String dato : articulos){
             r.append(dato + "    ");
-            if( i % 3 == 0) // como dos datos conforman una fila entera. cada dos datos hacemos un salto de línea
+            if( i % 3 == 0)
                 r.append("\n");
-
             i++;
-
         }
-
     }
-
-
 }
