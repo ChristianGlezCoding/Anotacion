@@ -12,6 +12,29 @@
     android:orientation="vertical"
     android:weightSum="1">
 
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/editTextFechaInicio"
+        android:hint="Fecha Inicio"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/editTextFechaFin"
+        android:hint="Fecha Fin" />
+
+    <Button
+        android:text="Filtrar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonFiltrar" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -26,7 +49,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/textViewResultados"
-                android:layout_weight="0.99" />
+                android:layout_weight="0.99"
+                android:hint="Resultados" />
         </LinearLayout>
     </ScrollView>
 
@@ -49,12 +73,6 @@
             android:id="@+id/buttonAtras"
             android:layout_weight="1" />
 
-        <Button
-            android:text="@string/filtrar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/buttonFiltrar"
-            android:layout_weight="1" />
     </LinearLayout>
 
 

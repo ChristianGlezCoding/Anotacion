@@ -109,9 +109,41 @@ public class BaseDatos extends SQLiteOpenHelper {
 
                 //Formato para poder comprobar que cambia la fecha mediante HH:mm:ss
                 //"yyyy-MM-dd HH:mm:ss", Locale.getDefault());
-                "dd-MM-yyyy", Locale.getDefault());
+                "yyyy-MM-dd", Locale.getDefault());
         Date date = new Date();
         return dateFormat.format(date);
+    }
+
+    public ArrayList<String> obtenerRegistrosFiltrados(SQLiteDatabase db, String fecha_inicio, String fecha_fin){
+
+        String nota, categoria, fecha;
+
+
+        String where = "Fecha BETWEEN ? and ?";
+
+
+        Cursor c = null;
+
+
+            c = db.query("ANOTACIONES", null, where,
+                    new String[]{fecha_inicio, fecha_fin}, null, null, "Fecha DESC",
+                    null);
+
+
+        ArrayList <String> anotaciones = new ArrayList<>();
+        if( c != null && c.moveToFirst() ){
+            do {
+                nota = "Categoría: " + c.getString(1);
+                categoria = " Nota: " + c.getString(2) + " ";
+                fecha = "Fecha: " +c.getString(3);
+
+                anotaciones.add(nota);
+                anotaciones.add(categoria);
+                anotaciones.add(fecha);
+            }while( c.moveToNext());
+        }
+        c.close();
+        return anotaciones;
     }
 
 

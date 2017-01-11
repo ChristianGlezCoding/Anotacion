@@ -12,18 +12,49 @@
     android:orientation="vertical"
     android:weightSum="1">
 
-    <EditText
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/editTextCategoria"
-        android:hint="@string/categoria"
-        android:paddingBottom="16dp"
-        android:layout_marginBottom="25dp"
-        android:background="@color/colorPrimaryDark"
-        android:layout_weight="0.03"
-        />
+        android:layout_weight="0.25"
+        android:gravity="center_vertical"
+        android:background="#309445"
+        android:layout_marginBottom="25dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <RadioButton
+                android:text="Tarea"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioButtonTareas" />
+
+            <RadioButton
+                android:text="Otros"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioButtonOtros"
+                android:checked="true" />
+
+            </RadioGroup>
+        </LinearLayout>
+
+        <TextView
+            android:text="Categorias"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewCategoria"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:textSize="24sp" />
+    </LinearLayout>
 
     <EditText
         android:layout_width="match_parent"

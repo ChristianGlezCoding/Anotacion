@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,9 +22,10 @@ import java.util.GregorianCalendar;
 public class MainActivity extends AppCompatActivity {
 
     Button guardar, ver;
-    EditText categoria, nota;
+    EditText nota;
     TextView resultado;
     BaseDatos db;
+    RadioButton otros, tarea;
 
 
     @Override
@@ -33,7 +35,14 @@ public class MainActivity extends AppCompatActivity {
 
         guardar = (Button)findViewById(R.id.buttonGuargar);
         ver = (Button)findViewById(R.id.buttonVerNotas);
-        categoria = (EditText)findViewById(R.id.editTextCategoria);
+
+        otros = (RadioButton)findViewById(R.id.radioButtonOtros);
+        tarea = (RadioButton)findViewById(R.id.radioButtonTareas);
+
+
+
+
+
         nota = (EditText)findViewById(R.id.editTextNota);
         resultado = (TextView)findViewById(R.id.textViewResultados);
         db = new BaseDatos(this);
@@ -51,15 +60,25 @@ public class MainActivity extends AppCompatActivity {
         guardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
                 try {
                     db.onCreate(db.getReadableDatabase());
                     resultado.setText("");
+                    String categoria = "";
+
+                    if(otros.isChecked()){
+                        categoria = "Otros";
+                    } else if(tarea.isChecked()) {
+                        categoria = "Tarea";
+                    }
+
                     //String para comprobar el cambio de tiempo mediante minutos y segundos
                     //String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
                     String currentTimeString = DateFormat.getDateInstance().format(new Date());
-                    db.insertarRegistro(db.getWritableDatabase(), categoria.getText().toString(),nota.getText().toString());
+                    db.insertarRegistro(db.getWritableDatabase(), categoria ,nota.getText().toString());
                     Toast.makeText(getApplicationContext(), "Datos introducidos correctamente", Toast.LENGTH_SHORT).show();
-                   resultado.setText("Categoría: " +categoria.getText() +
+                   resultado.setText("Categoría: " + categoria +
                                       "\nNota: "+ nota.getText() +
                                       "\nFecha: " + currentTimeString +
                                       "\nAñadidos");
